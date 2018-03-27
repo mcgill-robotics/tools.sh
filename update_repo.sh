@@ -5,6 +5,9 @@
 # Updates a repository quasi-safely.
 #
 
+# Exit on first error.
+set -e
+
 # Get path to repository.
 DIR="$(git rev-parse --show-toplevel)"
 

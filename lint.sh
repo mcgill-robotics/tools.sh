@@ -6,6 +6,9 @@
 # any errors defined in a .lintignore file at the root of the repository.
 #
 
+# Exit on first error.
+set -e
+
 # Get directory of this repository.
 DIR="$(git rev-parse --show-toplevel)"
 if [[ ! -d "${DIR}/catkin_ws/src" ]]; then
