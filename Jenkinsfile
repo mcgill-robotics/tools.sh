@@ -29,5 +29,14 @@ pipeline {
         }
       }
     }
+    stage('Deploy') {
+      when {
+        branch 'master'
+      }
+      steps {
+        sh 'rm -rf /home/jenkins/tools.sh'
+        sh 'cp -Rf . /home/jenkins/tools.sh'
+      }
+    }
   }
 }
