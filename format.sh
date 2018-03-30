@@ -38,6 +38,10 @@ function print_usage {
   echo "  --verbose             print additional information"
 }
 
+# Get directory of this repository.
+DIR="$(git rev-parse --show-toplevel)"
+
+
 # Parse arguments.
 while [[ "${#}" -gt 0 ]]; do
   case "${1}" in
@@ -124,9 +128,6 @@ if [[ "${FORMAT_CPP}" == "true" ]]; then
     exit 4
   fi
 fi
-
-# Get directory of this repository.
-DIR="$(git rev-parse --show-toplevel)"
 
 # Verify a catkin workspace is available.
 if [[ ! -d "${DIR}/catkin_ws" ]]; then
