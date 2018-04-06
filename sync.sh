@@ -136,6 +136,7 @@ function _sync {
 
 # Get directory of this repository.
 DIR="$(git rev-parse --show-toplevel)"
+pushd "${DIR}" > /dev/null
 
 # Get all submodule paths.
 if [[ -f "${DIR}/.gitmodules" ]]; then
@@ -174,7 +175,8 @@ if [[ "${COMMAND}" == "init" ]]; then
 
       # Configure all git repositories to point to the local bare repositories.
       pushd \"${ROOT}\"
-      git config --global url.\"\${PWD}/\".insteadOf 'git@github.com:'
+      git config --global --replace-all \
+        url.\"\${PWD}/\".insteadOf 'git@github.com:'
       popd
     "
     echo
