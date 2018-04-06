@@ -131,7 +131,11 @@ function _get_branch {
 }
 
 function _sync {
-  git ${COMMAND} "${MACHINE}" "$(_get_branch)" ${ARGS}
+  if [[ "${COMMAND}" == "push" ]]; then
+    git ${COMMAND} "${MACHINE}" --all ${ARGS}
+  else
+    git ${COMMAND} "${MACHINE}" "$(_get_branch)" ${ARGS}
+  fi
 }
 
 # Get directory of this repository.
