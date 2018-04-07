@@ -6,6 +6,16 @@
 
 This repository tracks a set of shell scripts used at McGill Robotics.
 
+## Table of Contents
+
+   * [Setup](#setup)
+   * [Usage](#usage)
+      * [`format.sh`](#formatsh)
+      * [`lint.sh`](#lintsh)
+      * [`sync.sh`](#syncsh)
+      * [`update_repo.sh`](#update_reposh)
+   * [Linting](#linting)
+
 ## Setup
 
 Clone this repository and add it to your `$PATH`.
