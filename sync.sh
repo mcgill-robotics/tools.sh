@@ -193,11 +193,12 @@ if [[ "${COMMAND}" == "init" ]]; then
       done
 
       # Configure all git repositories to point to the local bare repositories.
+      # NOTE: Order matters.
       pushd \"${ROOT}\"
       git config --global --replace-all \
-        url.\"\${PWD}/\".insteadOf 'git@github.com:'
+        url.\"git@github.com:\".insteadOf 'https://github.com/'
       git config --global --replace-all \
-        url.\"\${PWD}/\".insteadOf 'https://github.com/'
+        url.\"\${PWD}/\".insteadOf 'git@github.com:'
       popd
     "
     echo
