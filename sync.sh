@@ -103,9 +103,24 @@ if [[ -z ${COMMAND} ]]; then
 fi
 
 function _get_default_url {
-  # TODO: should deal with HTTPS setups too.
-  git remote get-url origin |
-    sed 's/.*://'  # Get the path after git@gitub.com:
+  local url
+  url="$(git remote get-url origin)"
+  if echo "${url}" | grep -q '@'; then
+    # Assume SSH.
+    # Get the path after git@gitub.com:
+    url="${url//*:/}"
+  else
+    # Assume HTTPS-like.
+    # Get the last 2 '/'-surrounded fields
+    url="$(echo "${url}" | rev | cut -d/ -f1-2 | rev)"
+  fi
+
+  # Append .git
+  if [[ "${url}" != *.git ]]; then
+    url="${url}.git"
+  fi
+
+  echo "${url}"
 }
 
 function _set_remote {
@@ -181,6 +196,8 @@ if [[ "${COMMAND}" == "init" ]]; then
       pushd \"${ROOT}\"
       git config --global --replace-all \
         url.\"\${PWD}/\".insteadOf 'git@github.com:'
+      git config --global --replace-all \
+        url.\"\${PWD}/\".insteadOf 'https://github.com/'
       popd
     "
     echo
