@@ -102,9 +102,12 @@ This will do the following:
 - SSH into the machine and create a folder in `$ROOT` for each
   repository/submodule in this repo.
 - Run `git init --bare` for each of the above repositories.
-- Run `git config --global url."<root>".insteadOf 'git@github.com:'`. This means
-  that every pull/push/fetch on that machine to a GitHub repository will now
-  reference the locally bare repositories instead.
+- Run `git config --global --replace-all url."$ROOT".insteadOf 'git@github.com:'`.
+  This means that every pull/push/fetch on that machine to a GitHub repository
+  will now reference the locally bare repositories instead.
+- Run `git config --global --replace-all url."git@github.com:".insteadOf 'https://github.com/'`.
+  This allows for HTTPS repositories to get the same treatment as SSH
+  repositories.
 
 #### `push`
 
