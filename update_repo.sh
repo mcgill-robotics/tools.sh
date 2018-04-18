@@ -48,7 +48,7 @@ if [[ -z "$(git status -s)" ]]; then
       echo "Updating automatically will lose any local changes in ${DIR})"
       echo -n "${QUESTION}Do you wish to hard reset to remote?${RESET}"
       echo -n " [y/N] (default no) "
-      read hard_reset
+      read -r hard_reset
       case "${hard_reset}" in
         y|Y )
           echo "${WARNING}Running: git reset --hard ${remote_branch}${RESET}"
