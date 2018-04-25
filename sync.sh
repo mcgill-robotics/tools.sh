@@ -5,6 +5,8 @@
 # Syncs the repository and its submodules with any machine on the local area
 # network that is accessible by SSH.
 #
+# shellcheck disable=SC2029,SC2086
+#
 
 # Exit on first error.
 set -e

@@ -4,6 +4,8 @@
 #
 # Formats all Python and C++ code in the repository with YAPF and clang-format.
 #
+# shellcheck disable=SC2086
+#
 
 # Default arguments.
 DRY_RUN=false
@@ -223,13 +225,13 @@ if [[ ${CHANGES_ONLY} == "true" ]]; then
   )"
 elif [[ -z "${PACKAGE}" ]]; then
   CLANG_FORMAT_FILES="$(
-    eval "find ${DIR}/catkin_ws/src \( \
+    eval "find ${DIR}/catkin_ws/src \\( \
         -iname '*.h' -o \
         -iname '*.c' -o \
         -iname '*.cpp' -o \
         -iname '*.hpp' -o \
         -iname '*.ino' \
-      \) -and ${FIND_EXCLUDES}"
+      \\) -and ${FIND_EXCLUDES}"
   )"
 else
   # Don't exclude any submodules if a package was specified.

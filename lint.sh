@@ -5,6 +5,8 @@
 # Lints the current repository with catkin_lint while ignoring submodules and
 # any errors defined in a .lintignore file at the root of the repository.
 #
+# shellcheck disable=SC2010,SC2086
+#
 
 # Exit on first error.
 set -e
