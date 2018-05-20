@@ -216,6 +216,15 @@ if [[ "${COMMAND}" == "init" ]]; then
     popd > /dev/null
   done
 else
+  # We must ensure that all submodules are not in detached HEAD mode by
+  # checking out their tracked branches.
+  echo "Checking out submodule branches..."
+  # shellcheck disable=SC2016
+  git submodule foreach -q --recursive \
+    'branch="$(git config -f $toplevel/.gitmodules submodule.$name.branch)";
+     git checkout $branch;
+     git reset --hard origin/HEAD'
+
   case "${COMMAND}" in
     fetch )
       VERB="Fetching"
