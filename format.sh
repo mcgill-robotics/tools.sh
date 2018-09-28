@@ -121,7 +121,7 @@ fi
 
 # Verify the clang-format version.
 if [[ "${FORMAT_CPP}" == "true" ]]; then
-  EXPECTED_CF_VERSION="6.0.0"
+  EXPECTED_CF_VERSION="3.8.0"
   CF_VERSION=$(clang-format --version | cut -d' ' -f3 | cut -d'-' -f1)
   if [[ "${CF_VERSION}" != "${EXPECTED_CF_VERSION}" ]]; then
     >&2 echo "clang-format version mismatch"
